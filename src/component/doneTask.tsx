@@ -2,10 +2,12 @@ type Donelist = {
     list: string;
 }
 
-const doneTask = ({ list }: Donelist) => {
-    <div className="flex justify-between h-8 items-center py-6 border-b group bg-white">
-        <u className="text-2xl" > {list}</u>
-    </div>
+const DoneTask = ({ list }: Donelist) => {
+    return (
+        <div className="h-8 my-auto py-6 p-4">
+            <del className="text-2xl" > {list}</del>
+        </div>
+    )
 }
 
-export default doneTask
+export default DoneTask

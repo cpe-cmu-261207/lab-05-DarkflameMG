@@ -1,6 +1,6 @@
 import Task from './Task';
 import { useState } from 'react'
-import doneTask from './doneTask'
+import DoneTask from './doneTask'
 
 type Todolist = {
     id: number;
@@ -31,31 +31,35 @@ const Todo = () => {
             setCurTask("")
 
         }
-        else
-        {
+        else {
             alert("Task cannot be empty")
         }
     }
-    const deleteTask = (id:number) => {
-        const newList = list.filter(x => x.id!==id)
+    const deleteTask = (id: number) => {
+        const newList = list.filter(x => x.id !== id)
         setlist(newList)
     }
-    const doneTask = (id:number) => {
-        const newList = list.filter(x => x.id!==id)
-        const Donelist = list.filter(x => x.id===id).map(x => x.Dolist)
+    const doneTask = (id: number) => {
+        const newList = list.filter(x => x.id !== id)
+        const Donelist = list.filter(x => x.id === id).map(x => x.Dolist)
         setlist(newList)
-        const newdoneList = [{listdone: Donelist[0]}, ...donelist]
+        const newdoneList = [{ listdone: Donelist[0] }, ...donelist]
         setdonelist(newdoneList)
     }
     return (
         <div>
             <div className='flex space-x-1'>
-                <input className='border border-gray-400 w-full text-2xl'
+                <input className='border border-gray-400 w-full text-2xl pl-2'
                     onKeyDown={onKeyDownCallback} onChange={onChangeCallBack} ></input>
-                <button className='border border-gray-400 w-8 font-bold' onClick={() => addlist(curTask)}>+</button>
+                <button className='border border-gray-400 w-8 font-bold bg-green-300 transform hover:-translate-y-1 hover:scale-110 transition duration-200 ease-in-out hover:shadow-lg rounded-md'
+                    onClick={() => addlist(curTask)}>+</button>
             </div>
-            {list.map(x => <Task id={x.id} list={x.Dolist} deleteBtn={deleteTask} doneBtn={doneTask}></Task>)}
-  
+            <div className='mt-4'>
+                {list.map(x => <Task id={x.id} list={x.Dolist} deleteBtn={deleteTask} doneBtn={doneTask}></Task>)}
+            </div>
+            <div className='bg-green-200 rounded-xl shadow-md pb-6 mt-4'>
+                {donelist.map(x => <DoneTask list={x.listdone}></DoneTask>)}
+            </div>
         </div>
     )
 }

@@ -8,7 +8,7 @@ type List = {
 
 const Task = ({ id, list, deleteBtn, doneBtn }: List) => {
     return (
-        <div className="flex justify-between h-8 items-center py-6 border-b group bg-white">
+        <div className="flex justify-between h-8 items-center py-6 border-b group bg-white p-4 transform hover:-translate-y-1 hover:scale-110 transition duration-200 ease-in-out rounded-xl hover:shadow-lg">
             <span className="text-2xl"> {list}</span>
             <div className="flex space-x-1 items-center">
                 <button className="text-white bg-white w-24 text-2xl group-hover:bg-green-400 group-hover:text-black rounded-lg text-lg"
