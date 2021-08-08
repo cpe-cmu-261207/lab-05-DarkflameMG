@@ -28,9 +28,7 @@ const Todo = () => {
             const newId = (new Date()).getTime()
             const newList = [{ id: newId, Dolist: List }, ...list]
             setlist(newList)
-            setCurTask("")
-
-        }
+         }
         else {
             alert("Task cannot be empty")
         }
